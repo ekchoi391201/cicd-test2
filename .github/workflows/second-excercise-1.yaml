@@ -1,41 +1,28 @@
-name: excercise shell
+name: Multi-Shell Environment Exercise
 on: [push]
-defaults:  # Workflow Level defaults
-  run:
-    shell: bash
-jobs:
-  show-working-directory-linux:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 
-        run: |
-          echo "It's Ubuntu"
-          uname -a
 
-  show-working-directory-win:
+jobs:
+  multi-shell-job:
     runs-on: windows-latest
-    defaults:  # Job Level Defaults
-      run:
-        shell: pwsh
     steps:
-      - name: 
+      - name: Bash - System Information
+        shell: bash
+        run: uname -a
+        
+      - name: PowerShell - Computer Information
+        shell: pwsh
         run: |
-          echo "windows"
           Get-ComputerInfo
-    
-      - name: Python Shell 
-        shell: python  # Step Level Default Shell
+          # $PSVersionTable
+          # Get-Host | Select-Object Version
+        
+      - name: Python - Version Information
+        shell: python
         run: |
           import sys
           print(sys.version)
           
-      - name: Python Shell 
-        shell: python  # Step Level Default Shell
-        run: |
-          import sys
-          print(sys.version)
-
-      - name: Node Shell 
-        shell: node  # Node.js 환경에서 실행하도록 변경
+      - name: Node.js - Version Information
+        shell: node {0}
         run: |
           console.log(process.version)
