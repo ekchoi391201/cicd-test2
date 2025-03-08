@@ -1,4 +1,4 @@
-name: first-workflow
+name: first-exercise-workflow.yaml
 on: [push, pull_request]
 
 jobs:
