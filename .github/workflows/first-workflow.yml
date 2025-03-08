@@ -10,5 +10,4 @@ jobs:
       - name: multiple line cmd
         run: |
           node -v
-          npm -v침ㄷㄱ
-          
+          npm -v          
